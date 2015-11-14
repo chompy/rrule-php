@@ -21,7 +21,7 @@ The next method of ContextualCode\Rrule returns a DateTime object for the next e
 
 ### Installation ###
 
-1) Clone, cd rrrulephpextension
-2) make
-3) sudo make install
-4) Make sure 'extension=cc-rrule.so' is in php.ini
+1. Clone, cd rrrulephpextension
+2. make
+3. sudo make install
+4. Make sure 'extension=cc-rrule.so' is in php.ini
