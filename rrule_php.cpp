@@ -39,7 +39,8 @@ icaltimetype RrulePhp::phpDateTimeToIcalTime(Php::Value datetime)
     icalTime.hour = datetime.call("format", "G");
     icalTime.minute = datetime.call("format", "i");
     icalTime.second = datetime.call("format", "s");
-    icalTime.is_utc = 0;
+    icalTime.is_date = 1;
+    icalTime.is_daylight = datetime.call("format", "I");
     icalTime.zone = icaltimezone_get_builtin_timezone( datetime.call("getTimezone").call("getName") );
     return icalTime;
 }
