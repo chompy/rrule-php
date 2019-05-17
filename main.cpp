@@ -4,7 +4,7 @@
 extern "C" {
     PHPCPP_EXPORT void *get_module() 
     {
-        static Php::Extension extension("cc-rrule", "0.0.1");        
+        static Php::Extension extension("cc-rrule", "0.0.2");        
 
         Php::Namespace extNamespace("ContextualCode");
 
