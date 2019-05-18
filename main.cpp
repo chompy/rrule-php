@@ -9,15 +9,14 @@ extern "C" {
         Php::Namespace extNamespace("ContextualCode");
 
         Php::Class<RrulePhp> rrulephp("Rrule");
-        rrulephp.method(
+        rrulephp.method<&RrulePhp::__construct>(
             "__construct",
-            &RrulePhp::__construct,
             {
-                Php::ByVal("rrule", Php::Type::String),
-                Php::ByVal("date", "DateTime")
-            }
+                Php::ByVal("rrule", Php::Type::String, true),
+                Php::ByVal("date", "DateTime", false, true)
+            }            
         );
-        rrulephp.method("next", &RrulePhp::next);
+        rrulephp.method<&RrulePhp::next>("next");
 
         extNamespace.add(std::move(rrulephp));
 
