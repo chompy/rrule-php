@@ -40,18 +40,14 @@ icaltimetype RrulePhp::phpDateTimeToIcalTime(Php::Value datetime)
     icalTime.minute = datetime.call("format", "i");
     icalTime.second = datetime.call("format", "s");
     icalTime.is_date = 1;
-    icalTime.is_daylight = datetime.call("format", "I");
-    icalTime.zone = icaltimezone_get_builtin_timezone( datetime.call("format", "T"));
     return icalTime;
 }
 
 Php::Value RrulePhp::icalTimeToPhpDateTime(icaltimetype icalTime)
 {
-
     if (!icaltime_is_valid_time(icalTime)) {
         return Php::Value(nullptr);
     }
-
     Php::Object datetime("DateTime");
     datetime.call(
         "setDate",
@@ -65,15 +61,5 @@ Php::Value RrulePhp::icalTimeToPhpDateTime(icaltimetype icalTime)
         icalTime.minute,
         icalTime.second
     );
-
-    Php::Object timezone(
-        "DateTimeZone", 
-        icaltimezone_get_display_name( (icaltimezone*) icalTime.zone ) 
-    );
-    datetime.call(
-        "setTimezone",
-        timezone
-    );
-
     return datetime;
 }
